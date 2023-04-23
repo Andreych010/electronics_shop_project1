@@ -7,7 +7,7 @@ if __name__ == '__main__':
     print(f'Общая стоимость {item1.produkt} в магазинах: {item1.calculate_total_price()}')  # Обая стоимость товаров 200000
     print(f'Общая стоимость {item2.produkt} в магазинах: {item2.calculate_total_price()}')  # 100000
 
-    # устанавливаем новый уровень цен
+    # устанавливаем новый уровень цен.
     Item.pay_rate = 0.8
     # применяем скидку
     item1.apply_discount()
