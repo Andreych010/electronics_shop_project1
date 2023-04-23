@@ -1,30 +1,30 @@
 class Item:
-    """
-    Класс для представления товара в магазине.
-    """
-    pay_rate = 1.0
+    '''
+Представляет товары в магазине
+    '''
+    pay_rate = 1.15
     all = []
 
-    def __init__(self, name: str, price: float, quantity: int) -> None:
-        """
-        Создание экземпляра класса item.
+    def __init__(self, product, price, quantity):
+        self.produkt = product
+        self.price = price
+        self.quantity = quantity
+        self.produkt = f'{product}'
 
-        :param name: Название товара.
-        :param price: Цена за единицу товара.
-        :param quantity: Количество товара в магазине.
-        """
-        pass
+        Item.all += self.produkt, self.price, self.quantity
 
-    def calculate_total_price(self) -> float:
-        """
-        Рассчитывает общую стоимость конкретного товара в магазине.
+    def __repr__(self):
+        return f'Item(product={self.produkt}, price={self.price}, quantity={self.quantity})'
 
-        :return: Общая стоимость товара.
-        """
-        pass
+    def calculate_total_price(self):
+        '''
+    Стоимость товара без скидки
+        '''
+        return self.price * self.quantity
 
-    def apply_discount(self) -> None:
-        """
-        Применяет установленную скидку для конкретного товара.
-        """
-        pass
+    def apply_discount(self):
+        '''
+    Стоимость товара со скидкой
+        '''
+        self.price = int(self.price * self.pay_rate)
+        return self.price
