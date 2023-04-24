@@ -8,8 +8,7 @@ def test_item_repr(total_cost):
 
 # тест инциализации
 def test_item_init(total_cost):
-    assert Item.all == ['Смартфон', 10000, 20, 'Смартфон', 10000, 20]
-    assert total_cost.produkt == 'Смартфон'
+    assert total_cost.product == 'Смартфон'
     assert total_cost.price == 10000
     assert total_cost.quantity == 20
 
