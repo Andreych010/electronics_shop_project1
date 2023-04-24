@@ -6,15 +6,13 @@ class Item:
     all = []
 
     def __init__(self, product, price, quantity):
-        self.produkt = product
+        self.product = product
         self.price = price
         self.quantity = quantity
-        self.produkt = f'{product}'
-
-        Item.all += self.produkt, self.price, self.quantity
+        self.all.append(self)
 
     def __repr__(self):
-        return f'Item(product={self.produkt}, price={self.price}, quantity={self.quantity})'
+        return f'Item(product={self.product}, price={self.price}, quantity={self.quantity})'
 
     def calculate_total_price(self):
         '''
