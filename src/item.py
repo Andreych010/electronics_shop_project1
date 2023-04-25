@@ -50,11 +50,11 @@ class Item:
         '''
 Класс-метод, инициализирующий экземпляры класса Item данными из файла src/items.csv
         '''
+        cls.all = []
         with open(PATH, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                cls.all.append(row)
-            print(cls.all)
+                cls(row['name'], row['price'], row['quantity'])
 
     @staticmethod
     def string_to_number(num):

@@ -36,7 +36,7 @@ def test_item_name(total_cost_1):
 #тест метода instantiate_from_csv
 def test_item_instantiate_from_csv(total_cost_1):
     total_cost_1.instantiate_from_csv()
-    assert len(Item.all) == 12
+    assert len(Item.all) == 5
 
 #тест метода tring_to_number
 def test_item_string_to_number(total_cost_1):
