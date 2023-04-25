@@ -27,16 +27,18 @@ def test_item_sale_apply_discount(total_cost):
     Item.pay_rate = 0.8
     assert total_cost.apply_discount() == 8000
 
+#тест метода name
 def test_item_name(total_cost_1):
     assert total_cost_1.name == 'Телефон'
     total_cost_1.name = 'Смартфон'
     assert total_cost_1.name == 'Смартфон'
-#def test_more_symble_name(total_cost_1):
 
+#тест метода instantiate_from_csv
 def test_item_instantiate_from_csv(total_cost_1):
     total_cost_1.instantiate_from_csv()
     assert len(Item.all) == 12
 
+#тест метода tring_to_number
 def test_item_string_to_number(total_cost_1):
     assert Item.string_to_number('5') == 5
     assert Item.string_to_number('5.0') == 5
