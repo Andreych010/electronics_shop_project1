@@ -30,7 +30,7 @@ class Item:
 
     def __str__(self):
         '''
-
+Возвращает нименование товара
         '''
         return f'{self.__name}'
 
