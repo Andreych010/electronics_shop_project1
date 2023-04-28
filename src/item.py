@@ -26,7 +26,13 @@ class Item:
         '''
 Предоставляет текстовый образ объекта
         '''
-        return f'Item(name={self.__name}, price={self.price}, quantity={self.quantity})'
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        '''
+
+        '''
+        return f'{self.__name}'
 
     @property
     def name(self):
@@ -55,7 +61,7 @@ class Item:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 cls(row['name'], row['price'], row['quantity'])
-
+        print(cls.all)
     @staticmethod
     def string_to_number(num):
         '''
@@ -76,3 +82,5 @@ Cтатический метод, возвращающий число из чи�
         '''
         self.price = int(self.price * self.pay_rate)
         return self.price
+
+
