@@ -3,7 +3,8 @@ from src.item import Item
 
 # тест __repr__
 def test_item_repr(total_cost):
-    assert total_cost.__repr__() == 'Item(name=Смартфон, price=10000, quantity=20)'
+    assert repr(total_cost) == "Item('Смартфон', 10000, 20)"
+    assert str(total_cost) == 'Смартфон'
 
 
 # тест инциализации
