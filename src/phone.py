@@ -42,6 +42,6 @@ class Phone(Item):
         if isinstance(other, Item):
             return self.quantity + other.quantity
         else:
-            raise (Exception("C объектами других классов запрещено сложение."))
+            raise Exception("C объектами других классов запрещено сложение.")
 
 
