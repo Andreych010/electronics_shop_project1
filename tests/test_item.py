@@ -28,21 +28,42 @@ def test_item_sale_apply_discount(total_cost):
     Item.pay_rate = 0.8
     assert total_cost.apply_discount() == 8000
 
-#тест метода name
+
+# тест метода name
 def test_item_name(total_cost_1):
     assert total_cost_1.name == 'Телефон'
     total_cost_1.name = 'Смартфон'
     assert total_cost_1.name == 'Смартфон'
 
-#тест метода instantiate_from_csv
+
+# тест метода instantiate_from_csv
 def test_item_instantiate_from_csv(total_cost_1):
     total_cost_1.instantiate_from_csv()
     assert len(Item.all) == 5
 
-#тест метода tring_to_number
+
+# тест метода tring_to_number
 def test_item_string_to_number(total_cost_1):
     assert Item.string_to_number('5') == 5
     assert Item.string_to_number('5.0') == 5
     assert Item.string_to_number('5.5') == 5
 
 
+# тест repr, str Phone
+def test_phone_repr_str(total_cost_2):
+    assert repr(total_cost_2) == "Phone('iPhone 14', 120000, 5, 2)"
+    assert str(total_cost_2) == 'iPhone 14'
+
+
+# тест init
+def test_phone_init(total_cost_2):
+    assert total_cost_2.name == 'iPhone 14'
+    assert total_cost_2.price == 120000
+    assert total_cost_2.quantity == 5
+    assert total_cost_2.number_of_sim == 2
+
+
+# тест add Phone
+def test_add_quantity(total_cost, total_cost_2):
+    assert total_cost_2 + total_cost == 25
+    assert total_cost_2 + total_cost_2 == 10
