@@ -67,3 +67,15 @@ def test_phone_init(total_cost_2):
 def test_add_quantity(total_cost, total_cost_2):
     assert total_cost_2 + total_cost == 25
     assert total_cost_2 + total_cost_2 == 10
+
+#Тесты KeyBoard
+def test_keyboard_repr_str(total_cost_3):
+    assert repr(total_cost_3) == "KeyBoard('Dark Project KD87A', 9600, 5)"
+    assert str(total_cost_3) == 'Dark Project KD87A'
+    assert str(total_cost_3.language) == "EN"
+
+    total_cost_3.change_lang()
+    assert str(total_cost_3.language) == "RU"
+
+    total_cost_3.change_lang().change_lang()
+    assert str(total_cost_3.language) == "RU"
