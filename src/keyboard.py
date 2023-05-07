@@ -1,17 +1,16 @@
 from src.item import Item
 
 
-class MixinKey(Item):
+class MixinKey:
     '''
     Реалезует хранение и изменение раскладки клавиатуры
     '''
-
-    def __init__(self, name: str, price: float, quantity: int, language='EN'):
-        super().__init__(name, price, quantity)
-        self.__language = language
+    __language = 'EN'
+    def __init__(self):
+        self.__language = self.__language
 
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.__language})"
+        return f"{self.__class__.__name__}('{self.__language}')"
 
     def __str__(self):
         return f"{self.__language}"
@@ -33,14 +32,13 @@ class MixinKey(Item):
             return self
 
 
-class KeyBoard(MixinKey, Item):
+class KeyBoard(Item, MixinKey):
     '''
     Класс KeyBoard для товара “клавиатура”
     '''
 
     def __init__(self, name: str, price: float, quantity: int):
         super().__init__(name, price, quantity)
-
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
 
