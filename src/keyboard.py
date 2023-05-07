@@ -6,6 +6,7 @@ class MixinKey:
     Реалезует хранение и изменение раскладки клавиатуры
     '''
     __language = 'EN'
+
     def __init__(self):
         self.__language = self.__language
 
@@ -39,6 +40,7 @@ class KeyBoard(Item, MixinKey):
 
     def __init__(self, name: str, price: float, quantity: int):
         super().__init__(name, price, quantity)
+
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
 
