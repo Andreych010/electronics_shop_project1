@@ -99,3 +99,4 @@ class Item:
         '''
         self.price = int(self.price * self.pay_rate)
         return self.price
+
