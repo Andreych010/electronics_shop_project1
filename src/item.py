@@ -2,6 +2,16 @@ import csv
 
 PATH = "../src/items.csv"
 
+class InstantiateCSVError(Exception):
+    '''
+    Класс-исключение, на наличие повреждений файла csv
+    '''
+
+    def __init__(self):
+        self.message = 'Файл item.csv поврежден'
+
+    def __str__(self):
+        return self.message
 
 class Item:
     '''
@@ -33,6 +43,7 @@ class Item:
         Возвращает нименование товара
         '''
         return f'{self.__name}'
+
     @property
     def name(self):
         '''
@@ -56,11 +67,18 @@ class Item:
         Класс-метод, инициализирующий экземпляры класса Item данными из файла src/items.csv
         '''
         cls.all = []
-        with open(PATH, newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                cls(row['name'], row['price'], row['quantity'])
-        print(cls.all)
+        try:
+            with open(PATH, newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    cls(row['name'], row['price'], row['quantity'])
+        except FileNotFoundError:
+            print('Отсутствует файл item.csv')
+        except NameError:
+            print('Переменная PATH не найдена')
+        except KeyError:
+            print(InstantiateCSVError())
+
     @staticmethod
     def string_to_number(num):
         '''
@@ -81,5 +99,3 @@ class Item:
         '''
         self.price = int(self.price * self.pay_rate)
         return self.price
-
-
