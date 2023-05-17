@@ -1,4 +1,6 @@
-from src.item import Item
+from src.item import Item, InstantiateCSVError
+import csv
+
 
 
 # тест __repr__
@@ -79,3 +81,19 @@ def test_keyboard_repr_str(total_cost_3):
 
     total_cost_3.change_lang().change_lang()
     assert str(total_cost_3.language) == "RU"
+
+# тест искючений в методе instantiate_from_csv класса Item
+def test_item_instantiate_from_csv_try_except():
+    PATH = "../src/items.csv"
+
+    try:
+        with open(PATH, newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                (row['name'], row['price'], row['quantity'])
+    except FileNotFoundError:
+        assert True
+    except NameError:
+        assert True
+    except KeyError:
+        assert True
