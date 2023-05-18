@@ -1,6 +1,5 @@
 import csv
 
-PATH = "../src/items.csv"
 
 class InstantiateCSVError(Exception):
     '''
@@ -12,6 +11,7 @@ class InstantiateCSVError(Exception):
 
     def __str__(self):
         return self.message
+
 
 class Item:
     '''
@@ -63,6 +63,9 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
+
+        PATH = "../src/items.csv"
+
         '''
         Класс-метод, инициализирующий экземпляры класса Item данными из файла src/items.csv
         '''
@@ -73,11 +76,11 @@ class Item:
                 for row in reader:
                     cls(row['name'], row['price'], row['quantity'])
         except FileNotFoundError:
-            print('Отсутствует файл item.csv')
+            raise FileNotFoundError('Отсутствует файл item.csv')
         except NameError:
-            print('Переменная PATH не найдена')
+            raise NameError('Переменная PATH не найдена')
         except KeyError:
-            print(InstantiateCSVError())
+            raise InstantiateCSVError()
 
     @staticmethod
     def string_to_number(num):
@@ -99,4 +102,3 @@ class Item:
         '''
         self.price = int(self.price * self.pay_rate)
         return self.price
-
